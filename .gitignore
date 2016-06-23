@@ -1,0 +1,8 @@
+*.iml
+.gradle
+local.properties
+sonar-project.properties
+.idea
+.DS_Store
+build
+captures
