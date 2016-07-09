@@ -12,5 +12,5 @@ Compile time code generation made simple.
 You can try it out by adding this dependency to your annotation processor module:
 
 ```groovy
-compile 'com.github.wrdlbrnft:code-builder:0.1.0.0'
+compile 'com.github.wrdlbrnft:code-builder:0.1.0.2'
 ```
