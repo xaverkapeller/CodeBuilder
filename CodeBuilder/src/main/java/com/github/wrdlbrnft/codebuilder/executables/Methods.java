@@ -15,6 +15,8 @@ public class Methods {
     public static final Method EQUALS = Methods.stub("equals");
     public static final Method TO_STRING = Methods.stub("toString");
     public static final Method GET_CLASS = Methods.stub("getClass");
+    public static final Method SUPER = Methods.stub("super");
+    public static final Method THIS = Methods.stub("this");
 
     private Methods() {
 
