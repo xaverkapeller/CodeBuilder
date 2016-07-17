@@ -12,12 +12,12 @@ import javax.lang.model.element.TypeElement;
  * Date: 09/07/16
  */
 
-public class ExternType {
+public class TypeDefinition {
 
     private final String mPackageName;
     private final String mClassName;
 
-    public ExternType(String packageName, String className) {
+    public TypeDefinition(String packageName, String className) {
         mPackageName = packageName;
         mClassName = className;
     }

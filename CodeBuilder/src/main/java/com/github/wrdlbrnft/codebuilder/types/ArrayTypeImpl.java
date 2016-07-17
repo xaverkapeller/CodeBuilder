@@ -28,11 +28,37 @@ class ArrayTypeImpl extends BlockWriter implements ArrayType {
 
     @Override
     public CodeElement newInstance(CodeElement... parameters) {
-        return Types.createNewInstance(this, parameters);
+        return new NewArrayInstanceElementImpl(mItemType, parameters);
     }
 
     @Override
     public CodeElement classObject() {
         return Types.classOf(this);
+    }
+
+    private static class NewArrayInstanceElementImpl extends BlockWriter {
+
+        private final Type mType;
+        private final CodeElement[] mParameters;
+
+        private NewArrayInstanceElementImpl(Type type, CodeElement[] parameters) {
+            mType = type;
+            mParameters = parameters;
+        }
+
+        @Override
+        protected void write(Block block) {
+            block.append("new ").append(mType).append("[");
+            for (int i = 0, count = mParameters.length; i < count; i++) {
+                final CodeElement parameter = mParameters[i];
+
+                if (i > 0) {
+                    block.append(", ");
+                }
+
+                block.append(parameter);
+            }
+            block.append("]");
+        }
     }
 }
