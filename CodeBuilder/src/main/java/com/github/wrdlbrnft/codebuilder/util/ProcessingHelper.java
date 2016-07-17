@@ -3,6 +3,7 @@ package com.github.wrdlbrnft.codebuilder.util;
 import java.util.Map;
 
 import javax.annotation.processing.ProcessingEnvironment;
+import javax.lang.model.element.TypeElement;
 import javax.lang.model.type.ArrayType;
 import javax.lang.model.type.PrimitiveType;
 import javax.lang.model.type.TypeKind;
@@ -38,6 +39,9 @@ public class ProcessingHelper {
         mProcessingEnvironment = processingEnvironment;
     }
 
+    public TypeElement getTypeElement(TypeMirror typeMirror) {
+        return (TypeElement) mProcessingEnvironment.getTypeUtils().asElement(typeMirror);
+    }
 
     public TypeMirror getTypeMirror(Class<?> cls) {
         if (cls.isPrimitive()) {
