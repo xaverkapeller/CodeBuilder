@@ -72,4 +72,10 @@ public class Methods {
                 .setName(name)
                 .build();
     }
+
+    public static Method from(ExecutableElement method) {
+        return new Method.Builder()
+                .setName(method.getSimpleName().toString())
+                .build();
+    }
 }
