@@ -56,7 +56,7 @@ public class Types {
         return new ClassElementImpl(cls);
     }
 
-    public static Type of(String packageName, String className) {
+    public static DefinedType of(String packageName, String className) {
         return new NamedElementImpl(packageName, className);
     }
 

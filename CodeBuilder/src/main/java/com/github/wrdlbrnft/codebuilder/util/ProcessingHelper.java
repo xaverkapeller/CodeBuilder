@@ -3,11 +3,13 @@ package com.github.wrdlbrnft.codebuilder.util;
 import java.util.Map;
 
 import javax.annotation.processing.ProcessingEnvironment;
+import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.type.ArrayType;
 import javax.lang.model.type.PrimitiveType;
 import javax.lang.model.type.TypeKind;
 import javax.lang.model.type.TypeMirror;
+import javax.tools.Diagnostic;
 
 /**
  * Created with Android Studio
@@ -41,6 +43,26 @@ public class ProcessingHelper {
 
     public TypeElement getTypeElement(TypeMirror typeMirror) {
         return (TypeElement) mProcessingEnvironment.getTypeUtils().asElement(typeMirror);
+    }
+
+    public TypeElement getTypeElement(String className) {
+        return mProcessingEnvironment.getElementUtils().getTypeElement(className);
+    }
+
+    public void printNote(String message) {
+        mProcessingEnvironment.getMessager().printMessage(Diagnostic.Kind.NOTE, message);
+    }
+
+    public void printNote(String message, Element element) {
+        mProcessingEnvironment.getMessager().printMessage(Diagnostic.Kind.NOTE, message, element);
+    }
+
+    public void printError(String message) {
+        mProcessingEnvironment.getMessager().printMessage(Diagnostic.Kind.ERROR, message);
+    }
+
+    public void printError(String message, Element element) {
+        mProcessingEnvironment.getMessager().printMessage(Diagnostic.Kind.ERROR, message, element);
     }
 
     public TypeMirror getTypeMirror(Class<?> cls) {
