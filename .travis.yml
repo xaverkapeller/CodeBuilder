@@ -1,5 +1,6 @@
 language: java
 jdk: oraclejdk8
 script:
-  - ./gradlew clean build bintrayUpload -Pbintray_user=$BINTRAY_USER -Pbintray_api_key=$BINTRAY_API_KEY -Pversion_name=0.2.0.$TRAVIS_BUILD_NUMBER
+  - ./gradlew clean build 
 after_success:
+  - ./gradlew bintrayUpload -Pbintray_user=$BINTRAY_USER -Pbintray_api_key=$BINTRAY_API_KEY -Pversion_name=0.2.0.$TRAVIS_BUILD_NUMBER
