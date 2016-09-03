@@ -37,7 +37,7 @@ bintray {
         repo = 'maven'
         name = 'CodeBuilder'
         userOrg = bintrayUser
-        licenses = ['Apache-2.0']
+        licenses = ['MIT']
         vcsUrl = 'https://github.com/Wrdlbrnft/CodeBuilder'
         publicDownloadNumbers = true
         version {

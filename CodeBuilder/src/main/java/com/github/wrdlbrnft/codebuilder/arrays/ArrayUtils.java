@@ -6,6 +6,7 @@ import com.github.wrdlbrnft.codebuilder.code.CodeElement;
 import com.github.wrdlbrnft.codebuilder.types.ArrayType;
 import com.github.wrdlbrnft.codebuilder.types.Type;
 import com.github.wrdlbrnft.codebuilder.types.Types;
+import com.github.wrdlbrnft.codebuilder.variables.Variable;
 
 import java.util.Collection;
 
@@ -15,22 +16,26 @@ import java.util.Collection;
  * Date: 25/08/16
  */
 
-public class Arrays {
+public class ArrayUtils {
 
     public static CodeElement of(Type componentType, CodeElement... values) {
-        return new ArrayElementImpl(componentType, java.util.Arrays.asList(values));
+        return new ArrayInitializerImpl(componentType, java.util.Arrays.asList(values));
     }
 
     public static CodeElement of(Type componentType, Collection<CodeElement> values) {
-        return new ArrayElementImpl(componentType, values);
+        return new ArrayInitializerImpl(componentType, values);
     }
 
-    private static class ArrayElementImpl extends BlockWriter {
+    public static CodeElement access(Variable arrayVariable, Variable position) {
+        return new ArrayAccessImpl(arrayVariable, position);
+    }
+
+    private static class ArrayInitializerImpl extends BlockWriter {
 
         private final ArrayType mArrayType;
         private final Collection<CodeElement> mValues;
 
-        private ArrayElementImpl(Type componentType, Collection<CodeElement> values) {
+        private ArrayInitializerImpl(Type componentType, Collection<CodeElement> values) {
             mArrayType = Types.arrayOf(componentType);
             mValues = values;
         }
@@ -51,6 +56,23 @@ public class Arrays {
                 block.append(value);
             }
             block.append(" }");
+        }
+    }
+
+    private static class ArrayAccessImpl extends BlockWriter {
+
+        private final Variable mArrayVariable;
+        private final Variable mPosition;
+
+        private ArrayAccessImpl(Variable arrayVariable, Variable position) {
+            mArrayVariable = arrayVariable;
+            mPosition = position;
+        }
+
+        @Override
+
+        protected void write(Block block) {
+            block.append(mArrayVariable).append("[").append(mPosition).append("]");
         }
     }
 }
