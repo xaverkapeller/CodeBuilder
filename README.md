@@ -6,15 +6,15 @@ Compile time code generation made simple.
  complex code quickly and safely.
  - **Quick to learn and easy to use**: CodeBuilder includes a powerful resolver engine which automatically generates names
   and ensures consistency and formatting across the generated code. All you need to worry about is the generated code itself!
-
----
+  
+[![Build Status](https://travis-ci.org/Wrdlbrnft/CodeBuilder.svg?branch=master)](https://travis-ci.org/Wrdlbrnft/CodeBuilder)
 
 ## How to add it to your project
 
 You can try it out by adding this dependency to your annotation processor module:
 
 ```groovy
-compile 'com.github.wrdlbrnft:code-builder:0.1.0.3'
+compile 'com.github.wrdlbrnft:code-builder:0.2.0.5'
 ```
 
 ## Basic Hello World example
