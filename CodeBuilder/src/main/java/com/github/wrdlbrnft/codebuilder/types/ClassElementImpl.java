@@ -1,9 +1,12 @@
 package com.github.wrdlbrnft.codebuilder.types;
 
+import javax.annotation.processing.ProcessingEnvironment;
+import javax.lang.model.element.TypeElement;
+
 /**
  * Created by kapeller on 09/07/15.
  */
-class ClassElementImpl extends AbsTypeImpl {
+class ClassElementImpl extends AbsTypeImpl implements DefinedType {
 
     private final Class<?> mClass;
 
@@ -27,5 +30,15 @@ class ClassElementImpl extends AbsTypeImpl {
             }
             setupType(packageName, className);
         }
+    }
+
+    @Override
+    public String getFullClassName() {
+        return mClass.getCanonicalName();
+    }
+
+    @Override
+    public TypeElement asTypeElement(ProcessingEnvironment processingEnv) {
+        return processingEnv.getElementUtils().getTypeElement(mClass.getCanonicalName());
     }
 }
