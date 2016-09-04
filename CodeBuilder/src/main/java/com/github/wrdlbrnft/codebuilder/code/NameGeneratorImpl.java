@@ -16,13 +16,13 @@ class NameGeneratorImpl implements NameGenerator {
     };
 
     private final Set<String> mUsedNames = new HashSet<>();
+    private final AtomicInteger mNameCounter = new AtomicInteger(1);
 
-    {
+    NameGeneratorImpl() {
         mUsedNames.add("do");
+        mUsedNames.add("if");
+        mUsedNames.add("for");
     }
-
-
-    private AtomicInteger mNameCounter = new AtomicInteger(1);
 
     @Override
     public String generate() {
