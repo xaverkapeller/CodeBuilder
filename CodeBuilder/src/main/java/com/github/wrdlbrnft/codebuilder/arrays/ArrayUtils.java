@@ -26,7 +26,7 @@ public class ArrayUtils {
         return new ArrayInitializerImpl(componentType, values);
     }
 
-    public static Variable access(Variable arrayVariable, Variable position) {
+    public static Variable access(Variable arrayVariable, CodeElement position) {
         return new ArrayAccessImpl(arrayVariable, position);
     }
 
@@ -62,9 +62,9 @@ public class ArrayUtils {
     private static class ArrayAccessImpl extends BlockWriter implements Variable {
 
         private final Variable mArrayVariable;
-        private final Variable mPosition;
+        private final CodeElement mPosition;
 
-        private ArrayAccessImpl(Variable arrayVariable, Variable position) {
+        private ArrayAccessImpl(Variable arrayVariable, CodeElement position) {
             mArrayVariable = arrayVariable;
             mPosition = position;
         }

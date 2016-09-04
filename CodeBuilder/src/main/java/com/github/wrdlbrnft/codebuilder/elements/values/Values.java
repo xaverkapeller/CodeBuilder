@@ -67,6 +67,10 @@ public class Values {
         return new KeywordElement("super");
     }
 
+    public static CodeElement invert(CodeElement value) {
+        return new InvertedValue(value);
+    }
+
     private static class KeywordElement extends BlockWriter implements KeyValue {
 
         private final String mStringRepresentation;
@@ -105,7 +109,7 @@ public class Values {
         }
     }
 
-    private static final class FieldValue extends BlockWriter implements Value {
+    private static class FieldValue extends BlockWriter implements Value {
 
         private final Type mType;
         private final Field mField;
@@ -118,6 +122,20 @@ public class Values {
         @Override
         protected void write(Block block) {
             block.append(mType).append(".").append(mField);
+        }
+    }
+
+    private static class InvertedValue extends BlockWriter {
+
+        private final CodeElement mValue;
+
+        private InvertedValue(CodeElement value) {
+            mValue = value;
+        }
+
+        @Override
+        protected void write(Block block) {
+            block.append("!").append(mValue);
         }
     }
 }
