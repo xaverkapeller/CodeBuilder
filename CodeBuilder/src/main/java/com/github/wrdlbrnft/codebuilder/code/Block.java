@@ -42,6 +42,9 @@ public class Block implements CodeElement {
     @Override
     public void resolve(Resolver resolver, NameGenerator generator) {
         for (CodeElement element : mElements) {
+            if (element == null) {
+                continue;
+            }
             element.resolve(resolver, generator);
         }
     }
@@ -49,6 +52,9 @@ public class Block implements CodeElement {
     @Override
     public void write(CodeBuilder builder) {
         for (CodeElement element : mElements) {
+            if (element == null) {
+                continue;
+            }
             element.write(builder);
         }
     }
