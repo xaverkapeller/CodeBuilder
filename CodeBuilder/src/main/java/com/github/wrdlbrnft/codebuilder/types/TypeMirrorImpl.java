@@ -20,17 +20,23 @@ class TypeMirrorImpl extends AbsTypeImpl implements Type {
 
     @Override
     public void resolve(Resolver resolver, NameGenerator generator) {
-        if (getClassName() == null) {
-            final TypeElement element = resolver.getTypeElement(mMirror);
-            if (element == null) {
-                setupType("", mMirror.toString());
-            } else {
-                final String className = Utils.getClassName(element);
-                final String packageName = Utils.getPackageName(element);
-                setupType(packageName, className);
+        try {
+            if (getClassName() == null) {
+                final TypeElement element = resolver.getTypeElement(mMirror);
+                if (element == null) {
+                    setupType("", mMirror.toString());
+                } else {
+                    final String className = Utils.getClassName(element);
+                    final String packageName = Utils.getPackageName(element);
+                    setupType(packageName, className);
+                }
             }
-        }
 
-        super.resolve(resolver, generator);
+            super.resolve(resolver, generator);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            setupType("", "FAILED_TO_RESOLVE");
+        }
     }
 }
