@@ -45,7 +45,7 @@ public class SourceFile {
 
         @Override
         public String registerImport(String packageName, String className) {
-            if (className.equals("?")) {
+            if (packageName.contains("?") || className.contains("?")) {
                 return "?";
             }
             final String fullName = packageName + "." + className;
