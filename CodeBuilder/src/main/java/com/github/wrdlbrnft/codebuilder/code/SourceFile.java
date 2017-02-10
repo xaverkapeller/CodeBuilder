@@ -45,6 +45,9 @@ public class SourceFile {
 
         @Override
         public String registerImport(String packageName, String className) {
+            if (className.equals("?")) {
+                return "?";
+            }
             final String fullName = packageName + "." + className;
             if (mLocalNameMap.containsKey(fullName)) {
                 return mLocalNameMap.get(fullName);
