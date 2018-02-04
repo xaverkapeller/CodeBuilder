@@ -1,7 +1,3 @@
-# CodeBuilder
-
-Compile time code generation made simple.
-
 * **Intuitive and powerful API**: Use an API built around the Builder pattern and immutable objects to generate 
  complex code quickly and safely.
 * **Quick to learn and easy to use**: CodeBuilder includes a powerful resolver engine which automatically generates names
