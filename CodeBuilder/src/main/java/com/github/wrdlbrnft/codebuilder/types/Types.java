@@ -208,14 +208,23 @@ public class Types {
         @Override
         protected void write(Block block) {
             block.append("new ").append(mType).append("(");
+            if (mParameters.length > 3) {
+                block.newLine().addIndention();
+            }
             for (int i = 0, count = mParameters.length; i < count; i++) {
                 final CodeElement parameter = mParameters[i];
 
                 if (i > 0) {
                     block.append(", ");
+                    if (mParameters.length > 3) {
+                        block.newLine();
+                    }
                 }
 
                 block.append(parameter);
+            }
+            if (mParameters.length > 3) {
+                block.newLine().removeIndention();
             }
             block.append(")");
         }
